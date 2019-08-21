@@ -1,6 +1,6 @@
 ## Organização da memória
 
-Os endereços até 150<sub>16</sub> (261<sub>10</sub>) serão destinados para o programa, com exceção do endereço 105<sub>16</sub> que será de entrada. O resto será ocupado pelos dados do programa.
+Os endereços até 200<sub>16</sub> (261<sub>10</sub>) serão destinados para o programa, com exceção do endereço 105<sub>16</sub> que será de entrada. O resto será ocupado pelos dados do programa.
 
 ## Algoritmo
 
@@ -9,19 +9,24 @@ Os endereços até 150<sub>16</sub> (261<sub>10</sub>) serão destinados para o 
 ```
 load 105hex AC
 mult por 10
-raiz quadrada pela metade
+raiz quadrada
 ```
 
-### `raiz quadrada pela metade`
+### `raiz quadrada`
 
 ```
-armazena AC em y
+store AC em y
 div DOIS
-store MQ em a
-load AC a
+store MQ em k
+load AC ZERO
 i > 10 # loop
 se AC jmp para programa principal
-div AC DOIS
+load AC y
+div AC k
+add AC k
+div DOIS
+store AC em k
+jmp to loop
 ```
 
 ## Locais de variáveis
@@ -29,7 +34,7 @@ div AC DOIS
 
 ## Comandos importantes
 
-| Comando | Hexa |
+| Comando |   Hexa   |
 |---------|----------|
 | Transfere o valor armazenado no endereço X da memória para o registrador AC | `00 00 00 00 01` |
 |  |  |
