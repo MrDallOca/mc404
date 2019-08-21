@@ -1,19 +1,30 @@
-00000001 00001001			 # load ENTRADA no MQ
-00001011 [DEZ]					 # mult 10
-00001101 [raiz quadrada] # raiz quadrada
-00100001 [y]						 # store AC em y
-00001100 [DOIS]				 # div AC por DOIS
-00001010								 # load MQ no AC
-00100001 [k]						 # store AC k
-00000001 [ZERO]					 # load AC ZERO
-00100001 [i]						 # store AC i
-00000001 [y]             # load AC y -- raiz quadrada
-00001100 [k]   				 # div AC por k
-00000101 [k]						 # add ACC k
-00001100 [DOIS]				 # div AC por DOIS
-00010011 [k]             # store AC em k
-00000001 [i]						 # load i em AC
-00000110 [UM]						 # sub UM
-00001111 [raiz quadrada] # jmp se i > 0 para o começo da raiz quadrada
-00000001 [k]             # load AC k
-00001101 10000000000     # fim do programa
+000 09 105 0B 020 
+# load ENTRADA MQ MULT 10
+001 0A 000 21 025
+# AC := MQ store AC em Y
+002 0C 021 0D 003
+# div AC por DOIS
+003 0A 000 21 024
+# AC = MQ store AC no k
+004 01 025 0C 024 
+# load y no AC AQUI div por k
+005 0A 000 05 024
+# load MQ no AC add k
+006 0C 021 0A 000
+# div por dois load MQ no AC
+007 21 024 01 026
+# store AC no k load i
+008 06 023 0D 009
+# sub AC UM JMP linha de baixo
+009 21 026 0F 004
+# store AC em i JMP+ AQUI
+00A 01 024 0D 400
+# load k stop execution
+020 A # DEZ
+021 2 # DOIS
+022 0 # ZERO
+023 1 # UM
+024 0 # k
+025 0 # y
+026 A # i
+105 20
